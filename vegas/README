@@ -1,0 +1,23 @@
+Manage Capri submition 
+
+perl caprice.pl -cluster| -visual| -filter |-submit [options]
+	-cluster [multipdb] [pdb]
+	-visual [program] [list]
+	-filter [rankes] [top#] [inp dir] [out dir]
+	-submit [head] [receptor] [list]
+
+
+-cluster 
+	clustering with gromacs
+
+-visual
+	prepares vmd or pymol script to load all models
+
+-filter
+	selects top scoring models and copy to separate directory 
+
+-submit
+	prepares final submission: creates complexes and reformat them according to CAPRI rules. 
+
+
+TODO: submition should be changed to work with complexes which are already present after refinement 

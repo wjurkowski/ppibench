@@ -1,0 +1,12 @@
+Readme including program howto in directories
+
+Changes
+	caprice7
+		-complex pdb and contact maps specified on command line
+		-added I_rms
+		-corrected CAPRI classification criteria
+		-L-rms used explicitely 
+
+	caprice-1.1
+		-first release version
+		-conservation based scoring moved to Capri/Sito

@@ -1,0 +1,28 @@
+# ============
+# Building a new background distribution contact matrix
+# ============
+
+# Triangulate the surface (once per chain) and get .atom and .cross
+./triominoes molecule.A.pdb 1.5
+./triominoes molecule.B.pdb 1.5
+
+# Calculate a contact matrix, in one (!) direction, catch output in STDOUT
+./do_calc_contact_matrix.pl molecule.A.pdb.atom molecule.B.pdb.cross > molecule.pdb.A.B.atf
+./do_calc_contact_matrix.pl molecule.B.pdb.atom molecule.A.pdb.cross > molecule.pdb.B.A.atf
+
+# (optional) join the .atf files for each pair of chains in order to get a
+#            full contact matrix for that particular pair, so to join the
+#			 two directions.
+#			 Call the files ".join.atf"
+script has to be written or re-written. <<< missing
+
+# Join all contact matrices for all pairs of chains in the data set
+./gen_nat_atf.pl dir..join.atf.files
+
+# ============
+# Running bioscorer
+# ============
+
+Change 455 and 13 in ./old_bioscorer.pl
+
+./old_bioscorer.pl big.join.atf.matrix dir.query.join.atf.matrices <basename.for.join.atf.files> > bio.out

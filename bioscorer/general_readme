@@ -1,0 +1,58 @@
+Title: readme file for double wrapper, bioscorer, etc.
+
+Created: Friday 18 dec 2009, around 11 p.m.
+
+What on earth is an .atf file?
+	The name .atf stands for Atom Triangle Frequencies. An .atf file
+	is a 455x13 matrix that counts the number of times a certain atom
+	group type to triangle type contact has been observed in a given
+	dataset of interfaces.
+
+What is a .join.atf file?
+	A .join.atf file is an .atf file for an interface...what???
+		As the whole pipeline looks now, I create one .atf file per
+		direction. Here is an example: say that we have an interface
+		between chain A and chain B. To count the atom to triangle
+		contacts for this interface, we have to take atoms on A against
+		triangles on B, and then atoms on B against triangles on A. See
+		These two cases as two directions, A to B and B to A. And so,
+		for each direction, I create one .atf file. Then, the join...pl
+		script joins pairs of .atf files corresponding to the same chain
+		pairs into .join.atf files.
+
+Where is the juicy juice?
+	Well, our important model is built on the information from the
+	native interfaces, and this information is stored in a huge .atf
+	file called native.2009.atf. We also have a file called native.2008.atf
+	which is the old knowledge base.
+
+Loads and loads of files, what to do, what to do?
+	.pdb, atom...pdb, atom...chain...pdb, .atom, .cross, .atf, .join.atf
+
+	For a dataset of 1000 .pdb files, you get the following situation
+
+	.pdb				1000
+	atom...pdb			1000
+	atom...chain...pdb	2000
+	.atom				2000
+	.cross				2000
+	.atf				2000
+	.join.atf			1000
+---------------------------------
+	Total				11000
+
+During a longer run, it is useful to keep .atom and .cross files, in case
+something goes wrong and the run dies before the list is finished. A good
+way of cleaning a directory when everything is finished is to keep only
+the .join.atf files as results. So far, I did not write any clean up
+script.
+
+Pipeline:
+
+	double_wrapper.pl
+		triominoes
+		atom_triangle_freq.pl
+
+	join_atf.pl
+
+	bioscorer.pl

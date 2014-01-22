@@ -1,0 +1,17 @@
+
+
+Pipeline:
+1. decoy generation (dodock)
+2. ranking based clustering (anchois)
+	TODO: sprawdzenie czy nie ma obrotu o 180 - odleglosci
+		-wyznaczenie srodka geom.
+		-wyznaczenie punktu najbardziej oddalonego
+		-mierzenie odleglosci miedzy tym punktem w roznych modelach
+	czy to wystarczy? czy jest lepszy sposob?
+		-mozna dodatkowo nalozyc srodki geometryczne i zobaczyc czy RMSD znaczaco zmaleje czy nie
+
+3. refinement of top 10 clusters	
+
+
+
+

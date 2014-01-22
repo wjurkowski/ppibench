@@ -1,0 +1,5 @@
+#prepare nonredundant pairs of protein chains
+
+do_pairs_multimers.pl	version for multimers (the same pdbid)
+do_pairs.pl		standard version (two lists: receptors and ligands)
+do_pairs-ppdock.pl	benchmark version

@@ -1,0 +1,46 @@
+caprice QA
+
+1) CAPRI like protein complex quality assessment for model and real structures
+
+
+  Run:
+	perl ../caprice7/caprice7.pl brugel [native contacts] [model contacts] [native pdb]  [model pdb] lrms
+	
+	Requirements:
+		PDB format
+			Both pdb should have unique chain identifiers.
+		Library path
+			update PERL5LIB to point the modules e.g in bash: export PERL5LIB=$PERL5LIB:/usr/local/caprice7/Modules
+
+  About:
+	Program compares protein complexes by calculation of contacts and RMSD
+	Contacts below 5Å. Required: list of native contacts, list of predicted contacts
+	fnat = predicted native contacts/native contacts
+	fnonnat = non native contacts/all contacts predicted
+
+	Residues within 5Å cutoff
+	fil = native residues found /all residues 
+	fir_l - residues in ligand
+	fir_r - residues in receptor
+
+	RMS of ligands. Alignment of receptors and RMS calculated for ligands
+	L_rms = rms of ligands
+
+	RMS of interface.
+	contacts < 10Å selected, backbones aligned and rms calculated 
+	l_rms = rms of interface
+
+	Qualty levels:
+	HIGH		fnat >= 0.5 AND (L_rms <= 1.0 OR I_rms <=1.0)
+	MEDIUM		0.5 > fnat >= 0.3 AND (L_rms <= 5.0 OR I_rms <=2.0)
+			fnat >= 0.5 AND L_rms > 1.0 AND I_rms >1.0
+	ACCEPTABLE	0.3 > fnat >= 0.1 AND (L_rms <= 10.0 OR I_rms<=4.0)
+			fnat >= 0.3 AND L_rms > 5.0 AND I_rms>2.0
+	INCORRECT	fnat < 0.1 OR (L_rms > 10.0 AND I_rms<=4.0)			
+
+2) conservation based score of models
+
+  Run:
+	perl caprice.pl score contacts conserv_rec conserv_lig
+
+

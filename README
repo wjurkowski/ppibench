@@ -1,0 +1,20 @@
+Protein Protein docking benchmark pipeline
+
+dopa #prepare nonredundant pairs
+        pairs-capri.pl # makes list of pairs for all vs all proteins
+
+        do_pairs.pl #  makes list of pairs for unique chains of the same protein
+        pairs.pl #old version
+
+dodock #perform docking
+
+caprice #capri-style assessment
+        
+sito #filter poses 
+
+R_cluster #clustering of poses
+
+vegas #prepare final file for upload
+
+
+autocapri.sh #unify format of downloaded decoy for scoring
